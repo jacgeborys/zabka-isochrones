@@ -1,0 +1,30 @@
+# Walking network (regenerable but slow)
+network/
+
+# Overpass API cache
+cache/
+
+# Old directories (superseded)
+analysis/
+png/
+charts/
+
+# Archive of superseded scripts
+archive/
+
+# Debug / scratch
+working/
+
+# Root-level screenshot PNGs
+/*.png
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude Code
+.claude/
+
+# OS
+Thumbs.db
+.DS_Store

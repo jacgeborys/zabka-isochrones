@@ -1,0 +1,7 @@
+# Ignore everything in output/ except maps and charts
+*
+!.gitignore
+!maps/
+!maps/*.png
+!charts/
+!charts/*.png
