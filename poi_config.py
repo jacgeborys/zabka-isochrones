@@ -5,8 +5,8 @@ without deleting its entry. Add new POIs by appending to POIS.
 """
 from pathlib import Path
 
-BASE_DIR    = Path(r"D:\QGIS\mapy_warszawy_misc\zabka")
-DATA_DIR    = Path(r"D:\QGIS\mapy_warszawy_misc\data\osm")
+BASE_DIR    = Path(__file__).resolve().parent
+DATA_DIR    = BASE_DIR.parent / "data"
 NETWORK_DIR = BASE_DIR / "network"
 OUTPUT_DIR  = BASE_DIR / "output"
 

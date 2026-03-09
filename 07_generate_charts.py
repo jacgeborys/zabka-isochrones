@@ -31,8 +31,8 @@ plt.rcParams['font.family'] = 'Segoe UI'
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PROJECT_DIR = Path(r"D:\QGIS\mapy_warszawy_misc\zabka")
-DATA_DIR    = Path(r"D:\QGIS\mapy_warszawy_misc\data")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR    = PROJECT_DIR.parent / "data"
 GPKG_DIR    = PROJECT_DIR / "output" / "gpkg"
 CHARTS_DIR  = PROJECT_DIR / "output" / "charts"
 CHARTS_DIR.mkdir(parents=True, exist_ok=True)

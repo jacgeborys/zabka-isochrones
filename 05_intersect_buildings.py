@@ -14,7 +14,7 @@ from datetime import datetime
 from poi_config import get_poi, poi_files, DATA_DIR
 
 # Use BDOT buildings for proper classification (not OSM buildings)
-BUILDINGS_FILE = DATA_DIR.parent / "bdot" / "bdot_buildings_warsaw.gpkg"
+BUILDINGS_FILE = DATA_DIR / "bdot" / "bdot_buildings_warsaw.gpkg"
 
 
 def main():

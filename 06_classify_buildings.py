@@ -16,8 +16,8 @@ import numpy as np
 import sys
 
 # Configuration
-PROJECT_DIR = Path(r"D:\QGIS\mapy_warszawy_misc\zabka")
-DATA_DIR = Path(r"D:\QGIS\mapy_warszawy_misc\data")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR.parent / "data"
 GPKG_DIR = PROJECT_DIR / "output" / "gpkg"
 GPKG_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -85,7 +85,7 @@ def load_and_classify_buildings():
     print("\n1. Loading Warsaw boundary...", end=' ', flush=True)
     if not WARSAW_ADMIN.exists():
         print(f"\n   ✗ Not found: {WARSAW_ADMIN}")
-        print(f"   Run: python D:\\QGIS\\mapy_warszawy_misc\\script\\fetch_warsaw_osm.py")
+        print(f"   Run: python 00_fetch_boundaries.py")
         return None
 
     warsaw = gpd.read_file(WARSAW_ADMIN)

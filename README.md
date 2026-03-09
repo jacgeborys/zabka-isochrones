@@ -36,6 +36,7 @@ Isochrone-based walking accessibility analysis for Warsaw, Poland. Generates cov
 Run scripts in order. Each step reads the output of the previous one.
 
 ```
+00_fetch_boundaries.py           Fetch Warsaw admin boundaries from OSM
 01_fetch_poi_osm.py              Fetch POI locations from OpenStreetMap
 02_fetch_walking_network.py      Download walking network for Warsaw (one-time)
 03_generate_isochrones_local.py  Generate 10/15-min walking isochrones per POI
@@ -48,16 +49,20 @@ Run scripts in order. Each step reads the output of the previous one.
 ### Quick start
 
 ```bash
-# 1. Download walking network (one-time, ~10 min)
+# 1. Fetch admin boundaries and walking network (one-time)
+python 00_fetch_boundaries.py
 python 02_fetch_walking_network.py
 
-# 2. Run pipeline for all enabled services
+# 2. Download BDOT10k building footprints manually (see Data sources below)
+# Place as: ../data/bdot/bdot_buildings_warsaw.gpkg
+
+# 3. Run pipeline for all enabled services
 python run_pipeline.py
 
-# 3. Classify buildings across all services
+# 4. Classify buildings across all services
 python 06_classify_buildings.py
 
-# 4. Generate charts
+# 5. Generate charts
 python 07_generate_charts.py
 ```
 
@@ -71,15 +76,15 @@ python run_pipeline.py church
 ## Project structure
 
 ```
-01-05_*.py                   Pipeline scripts (run in order, per service)
-06_classify_buildings.py     Cross-service building classification
-07_generate_charts.py        Final publication charts
-
+00-07_*.py                   Pipeline scripts (run in order)
 poi_config.py                Service definitions and configuration
 building_categories.py       BDOT10k building type mappings
 run_pipeline.py              Batch runner for 01-05 across all services
 generate_qgis_styles.py      Generate QGIS layer styles from data
 
+../data/                     Sibling folder (outside repo)
+  osm/                       Admin boundaries (fetched by 00_fetch_boundaries.py)
+  bdot/                      BDOT10k building footprints (manual download)
 styles/                      QGIS QML style files
 output/
   charts/                    Final publication charts (3 PNGs, tracked)
@@ -113,10 +118,10 @@ network/                     Cached walking network (gitignored, ~470 MB)
 
 ## Data sources
 
-- **POI locations**: OpenStreetMap via Overpass API
-- **Walking network**: OpenStreetMap via OSMnx
-- **Building footprints**: BDOT10k (Polish national topographic database)
-- **District boundaries**: OpenStreetMap admin boundaries
+- **POI locations**: OpenStreetMap via Overpass API (fetched by `01`)
+- **Walking network**: OpenStreetMap via OSMnx (fetched by `02`)
+- **District boundaries**: OpenStreetMap admin boundaries (fetched by `00`)
+- **Building footprints**: [BDOT10k](https://mapy.geoportal.gov.pl/) (Polish national topographic database) — download manually and place in `../data/bdot/`
 
 ## Dependencies
 
