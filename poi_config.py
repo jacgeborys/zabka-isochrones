@@ -87,6 +87,16 @@ POIS = [
         "extra_attributes": ["name", "operator", "addr:street", "addr:housenumber"],
         "walking_minutes": 15,  # Kids might walk a bit further
     },
+    {
+        "id": "marketplace",
+        "enabled": True,
+        "label": "Marketplace",
+        "osm_filters": [
+            {"amenity": "marketplace"},
+        ],
+        "extra_attributes": ["name", "opening_hours", "addr:street", "addr:housenumber"],
+        "walking_minutes": 15,
+    },
 ]
 
 
