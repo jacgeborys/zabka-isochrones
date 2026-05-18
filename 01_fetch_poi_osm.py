@@ -166,15 +166,15 @@ def main():
             if filtered_count > 0:
                 print(f"\n  Kept only elementary schools (podstaw): {len(gdf)}/{before_count}", end=' ')
 
-    # Filter marketplaces: exclude wholesale markets and commodity exchanges
+    # Filter marketplaces: keep only bazaars and targi (by name prefix)
     if poi_id == "marketplace":
         before_count = len(gdf)
         if 'name' in gdf.columns:
-            exclude = gdf['name'].fillna('').str.contains('Giełda|Rynek hurtowy', case=False, na=False)
-            gdf = gdf[~exclude]
+            keep = gdf['name'].fillna('').str.contains(r'^(bazar|targ)', case=False, na=False)
+            gdf = gdf[keep]
             filtered_count = before_count - len(gdf)
             if filtered_count > 0:
-                print(f"\n  Filtered out {filtered_count} wholesale/exchange marketplaces", end=' ')
+                print(f"\n  Kept {len(gdf)}/{before_count} marketplaces (bazar*/targ*)", end=' ')
 
     # Merge nearby churches (within 50m) to deduplicate building + symbol
     if poi_id == "church" and len(gdf) > 0:

@@ -30,7 +30,7 @@ Isochrone-based walking accessibility analysis for Warsaw, Poland. Generates cov
 | Parcel lockers (InPost, DHL, etc.) | 10 min | Blue |
 | Elementary schools | 15 min | Orange |
 | Churches (Roman Catholic) | 10 min | Pink |
-| Marketplaces (amenity=marketplace, excl. wholesale/exchanges) | 15 min | — |
+| Marketplaces (amenity=marketplace, name starts with bazar/targ) | 15 min | — |
 
 ## Pipeline
 
